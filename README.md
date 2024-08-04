@@ -6,15 +6,19 @@ This is an approach to writing documents in YAML using the [Goyamp](https://gith
 + read data files into a document
 + allow complicated processing in external programs and internally in Lua
 ## Yamlup File Format
-Yamlup reads 100% YAML files, using YAML maps for directives.
-Since a document is an ordered thing, we use a YAML list for each element of the document. A paragraph of text is a YAML string. The simplest document would therefore be
+Yamlup reads 100% YAML files, using YAML maps for directives. YAML can be difficult to work with for new users, because the syntax cares about indentation. However since we intend to automate parts of the document, we'll take it on the chin.
+Since a document is an ordered thing, we use a YAML list for each element of the document.
+### Paragraphs
+A paragraph of text is a YAML string. A simple document is
 ```YAML
 ---
-- Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+- Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+- ""
+- Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
 ```
 
-{ Forgetting the leading minus character results in the error : did not find expected '-' indicator  }
+[ Forgetting the leading minus character results in the error "did not find expected '-' indicator" ]
 ### Comments
 YAML has comments which start with the hash # so ...
 ### Headings
