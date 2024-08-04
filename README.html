@@ -1,5 +1,5 @@
 <h1>YAMLUP - Document markup in YAML</h1>
-<p>This is an approach to writing documents in YAML using the goyamp macro-processor. This technique will - collect and substitute variables and macros - generate the Markdown syntax - execute code snippets and insert the output in the document - read data files into a document - allow complicated processing in external programs and internally in Lua</p>
+<p>This is an approach to writing documents in YAML using the <a href="https://github.com/birchb1024/goyamp">Goyamp</a> macro-processor. This technique will - collect and substitute variables and macros - generate the Markdown syntax - execute code snippets and insert the output in the document - read data files into a document - allow complicated processing in external programs and internally in Lua</p>
 <h2>Yamlup File Format</h2>
 <p>Yamlup reads 100% YAML files, using YAML maps for directives.
 Since a document is an ordered thing, we use a YAML list for each element of the document. A paragraph of text is a YAML string. The simplest document would therefore be</p>
@@ -32,7 +32,7 @@ Since a document is an ordered thing, we use a YAML list for each element of the
 
 </code></pre>
 <h2>Generating Markdown from Yamlup format</h2>
-<p>Yamlup is converted to markdown using the Goyamp macro processor. This program scans each input file and outpust lines of text.
+<p>Yamlup is converted to markdown using the Goyamp macro processor. This program scans each input file and outputs lines of text.
 It first needs the macro definitions for the markup instructions, these are defined in <code>markdown.yaml</code>. The general format of the CLI command is</p>
 <pre><code class="language-shell">$ cat markdown.yaml &lt;your document files&gt;... | goyamp -o lines &gt; &lt;outputfile&gt;.md
 
