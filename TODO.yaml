@@ -1,0 +1,8 @@
+- h1: List of ideas and needs which are to be done (or rejected)
+- 1. make a generic heading macro which takes level as argument
+- 2. more levels of headings
+- 3. embedded markups bold/italic/links etc. Maybe {{ bold: some text }} or not because *some text* is available
+- 3. embedded markups links etc. Maybe {{ url: {label: some text, url: hrrp://foo.com/ }} or not because ()[] is available
+- 4. Table of Contents generator "toc:"
+- 5. evaluate code block and insert result in place. Also with echo and 'generates '
+- 6. insert CSV file or embedded as table 

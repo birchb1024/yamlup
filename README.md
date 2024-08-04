@@ -1,5 +1,10 @@
 # YAMLUP - Document markup in YAML
-This is an approach to writing documents in YAML using the [Goyamp](https://github.com/birchb1024/goyamp) macro-processor. This technique will - collect and substitute variables and macros - generate the Markdown syntax - execute code snippets and insert the output in the document - read data files into a document - allow complicated processing in external programs and internally in Lua
+This is an approach to writing documents in YAML using the [Goyamp](https://github.com/birchb1024/goyamp) macro-processor. This technique will
++ generate the Markdown syntax output
++ collect and substitute variables and macros
++ execute code snippets and insert the output in the document
++ read data files into a document
++ allow complicated processing in external programs and internally in Lua
 ## Yamlup File Format
 Yamlup reads 100% YAML files, using YAML maps for directives.
 Since a document is an ordered thing, we use a YAML list for each element of the document. A paragraph of text is a YAML string. The simplest document would therefore be
