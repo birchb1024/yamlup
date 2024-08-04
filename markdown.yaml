@@ -1,0 +1,35 @@
+---
+# TODO DRY
+- defmacro:
+    name: h1
+    args: $title
+    value: '# {{ $title }}'
+- defmacro:
+    name: h2
+    args: $title
+    value: '## {{ $title }}'
+- defmacro:
+    name: h3
+    args: $title
+    value: '### {{ $title }}'
+- defmacro:
+    name: code
+    args: $code
+    value: |
+        ```
+        {{ $code }}
+        ```
+- defmacro:
+    name: bash
+    args: $code
+    value: |
+        ```shell
+        {{ $code }}
+        ```
+- defmacro:
+    name: yaml
+    args: $code
+    value: |
+        ```YAML
+        {{ $code }}
+        ```

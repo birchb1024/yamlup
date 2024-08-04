@@ -1,0 +1,47 @@
+<h1>YAMLUP - Document markup in YAML</h1>
+<p>This is an approach to writing documents in YAML using the goyamp macro-processor. This technique will - collect and substitute variables and macros - generate the Markdown syntax - execute code snippets and insert the output in the document - read data files into a document - allow complicated processing in external programs and internally in Lua</p>
+<h2>Yamlup File Format</h2>
+<p>Yamlup reads 100% YAML files, using YAML maps for directives.
+Since a document is an ordered thing, we use a YAML list for each element of the document. A paragraph of text is a YAML string. The simplest document would therefore be</p>
+<pre><code class="language-YAML">---
+- Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+</code></pre>
+<p>{ Forgetting the leading minus character results in the error : did not find expected '-' indicator  }</p>
+<h3>Comments</h3>
+<p>YAML has comments which start with the hash # so ...</p>
+<h3>Headings</h3>
+<p>Headings are denoted by a YAML map with one entry, the title of the heading.</p>
+<pre><code class="language-YAML">- h&lt;level number&gt;: &lt;title line&gt;
+
+</code></pre>
+<p>for example</p>
+<pre><code class="language-YAML">- h1: My excellent document about an interesting subject
+</code></pre>
+<h3>Code blocks</h3>
+<p>Yamlup has markup keys for fixed width font blocks. &quot;code&quot;, &quot;bash:&quot; and &quot;yaml:&quot; are provided. The format is generally</p>
+<pre><code class="language-YAML">- yaml:, code: or bash: |
+  &lt;lines of code&gt;
+
+</code></pre>
+<p>For example</p>
+<pre><code class="language-YAML">- code: |
+  let Main() be [
+    Ws(&quot;Hello World!*N&quot;)
+  ]
+
+</code></pre>
+<h2>Generating Markdown from Yamlup format</h2>
+<p>Yamlup is converted to markdown using the Goyamp macro processor. This program scans each input file and outpust lines of text.
+It first needs the macro definitions for the markup instructions, these are defined in <code>markdown.yaml</code>. The general format of the CLI command is</p>
+<pre><code class="language-shell">$ cat markdown.yaml &lt;your document files&gt;... | goyamp -o lines &gt; &lt;outputfile&gt;.md
+
+</code></pre>
+<p>Example</p>
+<pre><code class="language-shell">cat markdown.yaml readme.yaml | goyamp -o line
+
+</code></pre>
+<p>Example, generate the Markdown and HTML of this document</p>
+<pre><code class="language-shell">cat markdown.yaml readme.yaml | goyamp -o lines | tee README.md | markdown-it /dev/stdin &gt; README.html
+
+</code></pre>
